@@ -1,0 +1,14 @@
+#Docker compose para desarrollo
+#Importante darle permisos de escrituras a la carpetas donde se guardan los archivos temporales manualmente
+version: "3.9"
+
+services:
+# falta agregar la base de datos 
+  web: 
+    container_name: dataFis #Nombre del contenedor
+    image: oberd/php-8.1-apache
+    ports:
+      - 9090:80 #Puerto de la maquina : puerto del contenedor
+    volumes:
+      - .:/var/www/html/ #Carpeta de la maquina : carpeta del contenedor
+      # - ./php.ini:/usr/local/etc/php/php.ini #Archivo de configuracion de php
