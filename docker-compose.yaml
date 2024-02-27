@@ -8,9 +8,9 @@ services:
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: my_secret_password
-      MYSQL_DATABASE: app_db
-      MYSQL_USER: db_user
-      MYSQL_PASSWORD: db_user_pass
+      MYSQL_DATABASE: datafis
+      MYSQL_USER: anghel3m
+      MYSQL_PASSWORD: 123
     ports:
       - "6033:3306"
     volumes:
