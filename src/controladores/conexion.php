@@ -2,7 +2,7 @@
 session_start();
 
 //credenciales de acceso a la base datos
-$servidor = "localhost";
+$servidor = "db";
 $usuario = "anghel3m";
 $password = "123";
 
