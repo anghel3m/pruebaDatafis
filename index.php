@@ -1,6 +1,6 @@
 <?php
 session_start();
-$path = __DIR__."/app";
+$path = "./app";
 $hasLogin = isset($_SESSION['email']);
 if(!$hasLogin){
     header("Location:$path/login/");
