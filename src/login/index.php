@@ -2,12 +2,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/pruebaDatafis/src/login/style.css">
     <title>Document</title>
 </head>
 <body>
 <main>
     <div class="login">
-    <form action="autenticacion.php" method="post">
+    <form action="conexion.php" method="post">
         <h1>Iniciar sesion</h1>
         <p>Correo</p> 
         <input type="email" name="email" placeholder="Correo" id="email" required>
