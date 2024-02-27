@@ -1,0 +1,10 @@
+create database USUARIO;
+use USUARIO;
+
+create table usuarios (
+ID int(5) primary key,
+NOMBRE varchar(35) not null,
+CORREO varchar(35) not null,
+PASS varchar(35) not null
+ 
+);
