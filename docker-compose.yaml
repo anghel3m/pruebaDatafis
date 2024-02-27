@@ -8,11 +8,11 @@ services:
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: my_secret_password
-      MYSQL_DATABASE: datafis
+      MYSQL_DATABASE: usuario
       MYSQL_USER: anghel3m
       MYSQL_PASSWORD: 123
     ports:
-      - "6033:3306"
+      - "3306:3306"
     volumes:
       - .db:/var/lib/mysql
   phpmyadmin:
@@ -35,3 +35,5 @@ services:
     volumes:
       - .:/var/www/html/ #Carpeta de la maquina : carpeta del contenedor
       # - ./php.ini:/usr/local/etc/php/php.ini #Archivo de configuracion de php
+    links:
+     - db
