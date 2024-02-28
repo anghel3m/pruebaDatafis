@@ -19,6 +19,7 @@ if ($hasLogin) {
   <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
   <title>Login</title>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="../../src/css/style.css">
   <script>
     const login = () => {
       console.log("se ejecutara el login")
@@ -54,6 +55,9 @@ if ($hasLogin) {
 </head>
 
 <body class="p-5 m-5 border-15 bd-example m-0 border-0">
+
+  <!-- <img src="../../src/img/fondo.jpg" alt=""> -->
+
   <div class="mb-3">
     <!-- Example Code -->
 
