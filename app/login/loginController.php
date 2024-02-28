@@ -6,7 +6,7 @@ $option = $_POST['option'];
 
 
 if($option == 'login'){
-    echo login();
+    login();
 }elseif($option == 'register'){
     register();
 }elseif($option == 'logout'){

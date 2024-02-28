@@ -31,7 +31,7 @@ if(!$hasLogin){
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li>
-        <a class="btn success" href="/app/login/loginController.php?option=logout">Cerrar sesión</a>
+        <a class="btn btn-danger" href="/app/login/loginController.php?option=logout">Cerrar sesión</a>
       </li>
       
     </ul>

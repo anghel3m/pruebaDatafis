@@ -30,6 +30,9 @@ if($hasLogin){
         data: {correo, password, option},
         success: function (response) {
           console.log(response);
+          if(response == 'Login exitoso'){
+            window.location.href = '/app/tareas/';
+          }
         },
         error: function (error) {
           console.log(error);
@@ -44,7 +47,6 @@ if($hasLogin){
 
             
 
-    <form method="POST" action="./loginController.php" >
 
       <div class="mb-3">
     <!-- Example Code -->
