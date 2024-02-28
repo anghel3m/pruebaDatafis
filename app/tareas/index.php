@@ -232,17 +232,15 @@ if(!$hasLogin){
     <!-- Modal -->
 
 <div class="container">
-<ul class="nav justify-content-end">
+<ul class="nav row justify-content-between">
 
-<li class="nav-item">
+<li class="nav-item col-2">
 <a class="nav-link" href="#">Datafis</a>
   </li> 
 
-<li class="nav-item">
-<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-  </li>  
+ 
 
-<li class="nav-item">
+<li class="nav-item col-2">
   <a class="btn btn-danger" href="/app/login/loginController.php?option=logout">Cerrar sesión</a>
   </li>
   
