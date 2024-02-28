@@ -13,10 +13,10 @@
     <!-- Example Code -->
     
         
-    <form>
+    <form method="POST" action="./loginController.php" >
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Correo</label>
-        <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+        <input type="email" class="form-control" id="correo" aria-describedby="emailHelp">
         
       </div>
       <div class="mb-3">

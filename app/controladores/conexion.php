@@ -14,11 +14,11 @@ try {
 
 
 
-    echo "conexion establecida";
+    // echo "conexion establecida";
 
 } catch (PDOException $error) {
 
-    echo "conexion erronea <br>" . $error;
+    // echo "conexion erronea <br>" . $error;
 }
 
 ?>
