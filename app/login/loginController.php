@@ -20,22 +20,23 @@ function login()
     $correo = $_POST['correo'];
     $password = $_POST['password'];
     global $conexion;
-    $sql = "SELECT * FROM usuarios WHERE correo ='$correo';";
-    hash('sha256', $password);
-    $resultado = $conexion->query($sql);
-    if($resultado->rowCount() == 1){
-        $row = $resultado->fetch(PDO::FETCH_ASSOC);
+    $stmt = $conexion->prepare("SELECT PASS, NOMBRE FROM usuarios WHERE correo = :correo");
+    $stmt->bindParam(':correo', $correo);
+    $stmt->execute();
+    if($stmt->rowCount() == 1){
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        // $row = $resultado->fetch(PDO::FETCH_ASSOC);
         $otraPass = $row['PASS'];
+        $nombre = $row['NOMBRE'];
         if(password_verify($password, $otraPass)){
             session_start();
             $_SESSION['correo'] = $correo;
+            $_SESSION['nombre'] = $nombre;
             echo 'Login exitoso';
         }else{
-            echo 'Usuario no existe o contraseña incorrecta1';
+            echo 'Usuario no existe o contraseña incorrecta';
         }
-        // $_SESSION['id'] = $row['ID'];
     }else{
-        // header('Location: ../index.php');
         echo 'Usuario no existe';
     }
 }
