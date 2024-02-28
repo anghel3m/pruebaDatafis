@@ -8,60 +8,96 @@ if(!$hasLogin){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Tareas</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
 
-</script>
+      const rellenar = ()=>{
+        const misCards = $('#misCards');
+        for (let index = 0; index < 10; index++) {
+          misCards.append(`<div class="col">
+                <div class="p-3 border bg-light">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <p class="card-text">contenido</p>
+                            <a href="#" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                            <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>`);
+      }
+    }
+
+
+    const consultarTareas = ()=>{
+      $.ajax({
+        type: "POST",
+        url: "tareasController.php",
+        data: {option: 'consultarTareas'},
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (error) {
+          console.log(error);
+        }
+      });
+    }
+
+
+    </script>
 </head>
+
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li>
-        <a class="btn btn-danger" href="/app/login/loginController.php?option=logout">Cerrar sesión</a>
-      </li>
-      
-    </ul>
-  </div>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li>
+                    <a class="btn btn-danger" href="/app/login/loginController.php?option=logout">Cerrar sesión</a>
+                </li>
 
+            </ul>
+        </div>
+    </nav>
 
-<div class="card">
-  <h5 class="card-header">Tarea 1</h5>
-  <div class="card-body">
-    <h5 class="card-title">Fumar marihuana</h5>
-    <a href="#" class="btn btn-warning">Go somewhere</a>
-    <a href="#" class="btn btn-danger">Go somewhere</a>
-  </div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <button onclick="rellenar()" class="btn btn-primary">Rellenar</button>
+            </div>
+            <div class="col">
+                <button onclick="consultarTareas()" class="btn btn-primary">Consultar tareas</button>
+            </div>
+        </div>
 
-<div class="card">
-  <h5 class="card-header">Tarea 2</h5>
-  <div class="card-body">
-    <h5 class="card-title">atracar</h5>
-    <a href="#" class="btn btn-warning">Go somewhere</a>
-    <a href="#" class="btn btn-danger">Go somewhere</a>
-  </div>
-</div>
+    </div>
 
-
-   
+    <div class="container">
+        <div class="row row-cols-1 row-cols-lg-3 md-2" id="misCards">
+            
+        </div>
+    </div>
 
 
 </body>
-</html>
 
+</html>
