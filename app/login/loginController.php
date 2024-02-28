@@ -1,7 +1,7 @@
 <?php
 require_once '../controladores/conexion.php';
 
-$option = $_POST['option'];
+$option = isset($_POST['option']) ? $_POST['option'] : $_GET['option'];
 
 
 
@@ -63,6 +63,7 @@ function register(){
 function logout(){
     session_start();
     session_destroy();
-    echo 'Sesion cerrada';
+    // echo 'Sesion cerrada';
+    header('Location: ../../index.php');
 }
 
