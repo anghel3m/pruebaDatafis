@@ -231,32 +231,28 @@ if(!$hasLogin){
     </div>
     <!-- Modal -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li>
-                    <a class="btn btn-danger" href="/app/login/loginController.php?option=logout">Cerrar sesión</a>
-                </li>
+<div class="container">
+<ul class="nav justify-content-end">
 
-            </ul>
-        </div>
-    </nav>
+<li class="nav-item">
+<a class="nav-link" href="#">Datafis</a>
+  </li> 
+
+<li class="nav-item">
+<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+  </li>  
+
+<li class="nav-item">
+  <a class="btn btn-danger" href="/app/login/loginController.php?option=logout">Cerrar sesión</a>
+  </li>
+  
+</ul>
+    </div>
 
     <div class="container">
         <div class="row">
             <div class="col">
                 <button onclick="mostrarModal('nuevaTarea')" class="btn btn-primary">Crear Nueva Tarea</button>
-            </div>
-            <div class="col">
-                <button onclick="consultarTareas()" class="btn btn-primary">Consultar Tareas Guardadas</button>
             </div>
         </div>
 
