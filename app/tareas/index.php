@@ -49,8 +49,14 @@ if(!$hasLogin){
 
 
     const eliminarTarea = (id) => {
-        console.log(id);
-        $.ajax({
+        Swal.fire({
+            title: "¿Desea eliminar la tarea?",
+            showCancelButton: true,
+            confirmButtonText: "Si",
+        }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({
             type: "POST",
             url: "tareasController.php",
             data: {
@@ -64,6 +70,10 @@ if(!$hasLogin){
             error: function(error) {
                 console.log(error);
             }
+        });
+        } else{
+            return;
+        }
         });
     }
     const editarTarea = () => {
