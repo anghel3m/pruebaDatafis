@@ -10,9 +10,7 @@
   </head>
   <body class="p-3 m-0 border-0 bd-example m-0 border-0">
 
-    <!-- Example Code -->
-    
-        
+            
 
     <form method="POST" action="./loginController.php" >
 
