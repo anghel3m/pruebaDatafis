@@ -40,45 +40,27 @@ if(!$hasLogin){
 </nav>
 
 
-
-<div>
-
-
-    <form action="agregar_tarea.php" method="post">
-        <br>
-        <label for="descripcion">Descripción:</label>
-        <br>
-       
-
-        <div class="form-floating">
-      <textarea class="form-control" placeholder="tarea" id="floatingTextarea2" style="height: 50px"></textarea>
-      <label for="floatingTextarea2">tarea</label>
-      </div>
-        <br>
-        <input type="submit" value="Agregar tarea" class="btn btn-success">
-    </form>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Tarea</th>
-    </tr>
-  </thead>
-  
-  <tbody>
-
-    <tr>
-      <th scope="row">1</th>
-      <td>fumar marihuna</td>
-    </tr>
-    
-    
-    <button type="button" class="btn btn-danger">eliminar</button>
-    <button type="button" class="btn btn-warning">modificar</button>
-  </tbody>
-</table>
+<div class="card">
+  <h5 class="card-header">Tarea 1</h5>
+  <div class="card-body">
+    <h5 class="card-title">Fumar marihuana</h5>
+    <a href="#" class="btn btn-warning">Go somewhere</a>
+    <a href="#" class="btn btn-danger">Go somewhere</a>
+  </div>
 </div>
+
+<div class="card">
+  <h5 class="card-header">Tarea 2</h5>
+  <div class="card-body">
+    <h5 class="card-title">atracar</h5>
+    <a href="#" class="btn btn-warning">Go somewhere</a>
+    <a href="#" class="btn btn-danger">Go somewhere</a>
+  </div>
+</div>
+
+
+   
+
 
 </body>
 </html>
