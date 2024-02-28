@@ -1,4 +1,14 @@
+<?php
+session_start();
+$path = "/app";
+$hasLogin = isset($_SESSION['correo']);
+if($hasLogin){
+  header("Location:$path/tareas/");
+}
+
+?>
 <!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
