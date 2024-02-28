@@ -53,14 +53,13 @@ if ($hasLogin) {
   </script>
 </head>
 
-<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+<body class="p-5 m-5 border-15 bd-example m-0 border-0">
   <div class="mb-3">
     <!-- Example Code -->
 
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12-auto">
-
+      <div class="row justify">
+        <div class="col-auto">
 
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Correo</label>
