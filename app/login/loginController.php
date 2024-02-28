@@ -63,6 +63,6 @@ function register(){
 function logout(){
     session_start();
     session_destroy();
-    header('Location: ../index.php');
+    echo 'Sesion cerrada';
 }
 
