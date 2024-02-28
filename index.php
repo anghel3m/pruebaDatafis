@@ -4,8 +4,8 @@ $path = "/app";
 $hasLogin = isset($_SESSION['correo']);
 if(!$hasLogin){
     header("Location:$path/login/");
-    die();
+    // die();
 }else{
     header("Location:$path/tareas/");
-    die();
+    // die();
 }

@@ -1,6 +1,9 @@
 <?php
-include_once dirname(dirname(__DIR__)). '/index.php';
-
+session_start();
+$hasLogin = isset($_SESSION['correo']);
+if(!$hasLogin){
+    header("Location:/app/login/");
+}
 ?>
 
 <!DOCTYPE html>

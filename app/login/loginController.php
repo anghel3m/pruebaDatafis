@@ -6,7 +6,7 @@ $option = $_POST['option'];
 
 
 if($option == 'login'){
-    login();
+    echo login();
 }elseif($option == 'register'){
     register();
 }
@@ -26,17 +26,16 @@ function login()
         $row = $resultado->fetch(PDO::FETCH_ASSOC);
         $otraPass = $row['PASS'];
         if(password_verify($password, $otraPass)){
+            session_start();
+            $_SESSION['correo'] = $correo;
             echo 'Login exitoso';
         }else{
-            echo 'Usuario no existe o contraseña incorrecta';
+            echo 'Usuario no existe o contraseña incorrecta1';
         }
-        session_start();
-        $_SESSION['correo'] = $correo;
         // $_SESSION['id'] = $row['ID'];
-        header('Location: /tareas/index.php');
     }else{
         // header('Location: ../index.php');
-        echo 'Usuario no existe o contraseña incorrecta';
+        echo 'Usuario no existe';
     }
 }
 
