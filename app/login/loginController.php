@@ -9,8 +9,9 @@ if($option == 'login'){
     echo login();
 }elseif($option == 'register'){
     register();
-}
-else{
+}elseif($option == 'logout'){
+    logout();
+}else{
     echo "errror 700000";
 }
 
@@ -56,5 +57,12 @@ function register(){
         // header('Location: ../index.php');
         echo 'Usuario no existe o contraseña incorrecta';
     }
+}
+
+
+function logout(){
+    session_start();
+    session_destroy();
+    header('Location: ../index.php');
 }
 
