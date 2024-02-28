@@ -12,7 +12,7 @@ if($option == 'login'){
 }elseif($option == 'logout'){
     logout();
 }else{
-    echo "errror 700000";
+    echo "Opcion no valida";
 }
 
 function login()
@@ -34,7 +34,7 @@ function login()
             $_SESSION['nombre'] = $nombre;
             echo 'Login exitoso';
         }else{
-            echo 'Usuario no existe o contraseña incorrecta';
+            echo 'Contraseña incorrecta';
         }
     }else{
         echo 'Usuario no existe';

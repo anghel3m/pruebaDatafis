@@ -20,23 +20,34 @@ if(!$hasLogin){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
+      $( document ).ready(()=>{
+        consultarTareas();
+        
+      });
 
-      const rellenar = ()=>{
+      const rellenar = (tarea)=>{
+        const {contenido, titulo, id} = tarea;
         const misCards = $('#misCards');
-        for (let index = 0; index < 10; index++) {
           misCards.append(`<div class="col">
                 <div class="p-3 border bg-light">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Titulo</h5>
-                            <p class="card-text">contenido</p>
-                            <a href="#" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                            <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <h5 class="card-title">${titulo}</h5>
+                            <p class="card-text">${contenido}</p>
+                            <a href="#" onclick="editarTarea(${id})" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                            <a href="#" onclick="eliminarTarea(${id})" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                         </div>
                     </div>
                 </div>
             </div>`);
-      }
+    }
+
+
+    const eliminarTarea = (id)=>{
+      console.log(id);
+    }
+    const editarTarea = (id)=>{
+      console.log(id);
     }
 
 
@@ -46,7 +57,14 @@ if(!$hasLogin){
         url: "tareasController.php",
         data: {option: 'consultarTareas'},
         success: function (response) {
+          $("#misCards").html('');
           console.log(response);
+          const values = Object.values(response);
+          console.log(values);
+          values.forEach(tarea => {
+            console.log(tarea);
+            rellenar(tarea);
+          });
         },
         error: function (error) {
           console.log(error);
