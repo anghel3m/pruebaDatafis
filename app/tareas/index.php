@@ -43,6 +43,21 @@ if(!$hasLogin){
 
 <div>
 
+
+    <form action="agregar_tarea.php" method="post">
+        <br>
+        <label for="descripcion">Descripción:</label>
+        <br>
+       
+
+        <div class="form-floating">
+      <textarea class="form-control" placeholder="tarea" id="floatingTextarea2" style="height: 50px"></textarea>
+      <label for="floatingTextarea2">tarea</label>
+      </div>
+        <br>
+        <input type="submit" value="Agregar tarea" class="btn btn-success">
+    </form>
+
 <table class="table">
   <thead>
     <tr>
@@ -55,10 +70,10 @@ if(!$hasLogin){
 
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
+      <td>fumar marihuna</td>
     </tr>
     
-    <button type="button" class="btn btn-success">agregar</button>
+    
     <button type="button" class="btn btn-danger">eliminar</button>
     <button type="button" class="btn btn-warning">modificar</button>
   </tbody>
