@@ -13,11 +13,9 @@
     <!-- Example Code -->
     
         
-<<<<<<< HEAD
-   <form action="../controladores/conexion.php" method="post"></form>
-=======
+
     <form method="POST" action="./loginController.php" >
->>>>>>> fd6a3e0be5cd48d616b63a050b26fa481a5b34b4
+
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Correo</label>
         <input type="email" class="form-control" id="correo" aria-describedby="emailHelp">
