@@ -13,7 +13,7 @@
     <!-- Example Code -->
     
         
-    <form>
+   <form action="../controladores/conexion.php" method="post"></form>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Correo</label>
         <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
