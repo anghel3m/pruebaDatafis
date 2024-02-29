@@ -7,8 +7,6 @@ $option = isset($_POST['option']) ? $_POST['option'] : $_GET['option'];
 
 if($option == 'login'){
     login();
-}elseif($option == 'register'){
-    register();
 }elseif($option == 'logout'){
     logout();
 }else{
@@ -38,25 +36,6 @@ function login()
         }
     }else{
         echo 'Usuario no existe';
-    }
-}
-
-
-function register(){
-    $correo = $_POST['correo'];
-    $password = $_POST['password'];
-    $password = password_hash($password, PASSWORD_DEFAULT);
-    global $conexion;
-    $sql = "INSERT INTO usuarios (correo, pass) VALUES ('$correo', '$password');";
-    echo $sql;
-    $resultado = $conexion->query($sql);
-    if($resultado->rowCount() == 1){
-        echo 'Registro exitoso';
-        // session_start();
-        // header('Location: ../home/home.php');
-    }else{
-        // header('Location: ../index.php');
-        echo 'Usuario no existe o contraseña incorrecta';
     }
 }
 
