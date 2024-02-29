@@ -111,7 +111,7 @@ INSERT INTO `tareas` (`ID`, `TITULO`, `CONTENIDO`) VALUES
 (1, 'compras', 'se deben comprar los matariales '),
 (2, 'transportar', 'la direccion de entrega por establecer '),
 (3, 'cronograma', 'construccion del cronograma semanal '),
-(4, 'personal', 'se debe buscar un personal capasitado ');
+(4, 'personal', 'se debe buscar un personal capacitado ');
 
 
 --
