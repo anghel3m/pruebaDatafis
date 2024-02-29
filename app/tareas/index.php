@@ -65,11 +65,10 @@ if(!$hasLogin){
                 id
             },
             success: function(response) {
-                console.log(response);
                 consultarTareas();
             },
             error: function(error) {
-                console.log(error);
+               
             }
         });
         } else{
@@ -91,7 +90,7 @@ if(!$hasLogin){
             },
             success: function(response) {
               idTarea = "";
-                console.log(response);
+               
                 const {status, mensaje} = response;
                 $('#exampleModalCenter').modal('hide');
                 consultarTareas();
@@ -103,7 +102,7 @@ if(!$hasLogin){
                 })
             },
             error: function(error) {
-                console.log(error);
+              
             }
         });
     }
@@ -118,23 +117,18 @@ if(!$hasLogin){
             },
             success: function(response) {
                 $("#misCards").html('');
-                console.log(response);
                 const values = Object.values(response);
-                console.log(values);
                 values.forEach(tarea => {
-                    console.log(tarea);
+                  
                     rellenar(tarea);
                 });
             },
-            error: function(error) {
-                console.log(error);
-            }
+            error: function(error) {}
         });
     }
 
 
     const mostrarModal = (opcion, id="", titulo="", contenido="") => {
-      console.log(opcion);
       $("#btnGuardarTarea").hide();
       $("#btnEditarTarea").hide();
       $('#exampleModalCenter').modal('show'); 
@@ -179,7 +173,6 @@ if(!$hasLogin){
                 contenido
             },
             success: function(response) {
-                console.log(response);
                 const {status, mensaje} = response;
                 $('#exampleModalCenter').modal('hide');
                 consultarTareas();
@@ -191,7 +184,7 @@ if(!$hasLogin){
                 })
             },
             error: function(error) {
-                console.log(error);
+         
             }
         });
     }

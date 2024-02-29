@@ -22,7 +22,7 @@ if ($hasLogin) {
   <link rel="stylesheet" href="../../src/css/style_login.css">
   <script>
     const login = () => {
-      console.log("se ejecutara el login")
+     
       const correo = $('#correo').val();
       const password = $('#exampleInputPassword1').val();
       const option = 'login';
@@ -35,7 +35,7 @@ if ($hasLogin) {
           option
         },
         success: function(response) {
-          console.log(response);
+         
           if (response != 'Login exitoso') {
             $('#divResponse').html(`
             <div class="alert alert-danger d-flex align-items-center alert-dismissible" role="alert">
@@ -47,7 +47,6 @@ if ($hasLogin) {
           window.location.href = '/app/tareas/';
         },
         error: function(error) {
-          console.log(error);
         }
       });
     }
