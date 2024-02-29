@@ -39,7 +39,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID`, `NOMBRE`, `CORREO`, `PASS`) VALUES
-(2, 'administrador', 'admin@admin.com', '$2y$10$ioL3WGmy0VFJRql7noh5KuwzEhb.inFnqrGt.DrElbwCsuOPhQL2G');
+(1, 'administrador', 'admin@admin.com', '$2y$10$ioL3WGmy0VFJRql7noh5KuwzEhb.inFnqrGt.DrElbwCsuOPhQL2G');
 
 --
 -- Índices para tablas volcadas
@@ -109,8 +109,8 @@ CREATE TABLE `tareas` (
 
 INSERT INTO `tareas` (`ID`, `TITULO`, `CONTENIDO`) VALUES
 (1, 'compras', 'se deben comprar los matariales '),
-(2, 'transportar', 'la direccion de entrega por establecer ')
-(3, 'cronograma', 'construccion del cronograma semanal ')
+(2, 'transportar', 'la direccion de entrega por establecer '),
+(3, 'cronograma', 'construccion del cronograma semanal '),
 (4, 'personal', 'se debe buscar un personal capasitado ');
 
 
