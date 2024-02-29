@@ -16,6 +16,10 @@ function login()
 {
     $correo = $_POST['correo'];
     $password = $_POST['password'];
+    if ((empty($correo)) && (empty($password)) ) {
+
+        echo 'Los campos no pueden estar vacío.';
+      }else{
     global $conexion;
     $stmt = $conexion->prepare("SELECT PASS, NOMBRE FROM usuarios WHERE correo = :correo");
     $stmt->bindParam(':correo', $correo);
@@ -34,8 +38,9 @@ function login()
             echo 'Contraseña incorrecta';
         }
     } else {
-        echo 'Usuario no existe';
+        echo 'intenta nuevamente';
     }
+}
 }
 
 
