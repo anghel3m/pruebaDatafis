@@ -4,7 +4,6 @@ require_once '../controladores/conexion.php';
 $option = isset($_POST['option']) ? $_POST['option'] : $_GET['option'];
 
 
-
 if($option == 'login'){
     login();
 }elseif($option == 'logout'){
