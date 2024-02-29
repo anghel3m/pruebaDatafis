@@ -1,7 +1,7 @@
 <?php
 session_start();
 $hasLogin = isset($_SESSION['correo']);
-if(!$hasLogin){
+if (!$hasLogin) {
     header("Location:/app/login/");
 }
 ?>
@@ -10,9 +10,7 @@ if(!$hasLogin){
 <html lang="en">
 
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
@@ -21,20 +19,20 @@ if(!$hasLogin){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../src/css/style_tareas.css">
     <script>
-    let idTarea = "";
-    $(document).ready(() => {
-        consultarTareas();
+        let idTarea = "";
+        $(document).ready(() => {
+            consultarTareas();
 
-    });
+        });
 
-    const rellenar = (tarea) => {
-        const {
-            contenido,
-            titulo,
-            id
-        } = tarea;
-        const misCards = $('#misCards');
-        misCards.append(`<div class="col p-2">
+        const rellenar = (tarea) => {
+            const {
+                contenido,
+                titulo,
+                id
+            } = tarea;
+            const misCards = $('#misCards');
+            misCards.append(`<div class="col p-2">
                 <div class="p-1 border bg-light">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
@@ -46,148 +44,159 @@ if(!$hasLogin){
                     </div>
                 </div>
             </div>`);
-    }
-
-
-    const eliminarTarea = (id) => {
-        Swal.fire({
-            title: "¿Desea eliminar la tarea?",
-            showCancelButton: true,
-            confirmButtonText: "Si",
-        }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-            $.ajax({
-            type: "POST",
-            url: "tareasController.php",
-            data: {
-                option: 'eliminarTarea',
-                id
-            },
-            success: function(response) {
-                consultarTareas();
-            },
-            error: function(error) {
-               
-            }
-        });
-        } else{
-            return;
         }
-        });
-    }
-    const editarTarea = () => {
-        const titulo = $("#titulotarea").val();
-        const contenido = $("#contenidoTarea").val();
-        $.ajax({
-            type: "POST",
-            url: "tareasController.php",
-            data: {
-                option: 'editarTarea',
-                id: idTarea,
-                titulo,
-                contenido
-            },
-            success: function(response) {
-              idTarea = "";
-               
-                const {status, mensaje} = response;
-                $('#exampleModalCenter').modal('hide');
-                consultarTareas();
-                mostrarAlerta({
-                  title: "Tarea editada",
-                  text: mensaje,
-                  icon: status,
-                  textButton: "Aceptar"
-                })
-            },
-            error: function(error) {
-              
+
+
+        const eliminarTarea = (id) => {
+            Swal.fire({
+                title: "¿Desea eliminar la tarea?",
+                showCancelButton: true,
+                confirmButtonText: "Si",
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "POST",
+                        url: "tareasController.php",
+                        data: {
+                            option: 'eliminarTarea',
+                            id
+                        },
+                        success: function(response) {
+                            consultarTareas();
+                        },
+                        error: function(error) {
+
+                        }
+                    });
+                } else {
+                    return;
+                }
+            });
+        }
+        const editarTarea = () => {
+            const titulo = $("#titulotarea").val();
+            const contenido = $("#contenidoTarea").val();
+            $.ajax({
+                type: "POST",
+                url: "tareasController.php",
+                data: {
+                    option: 'editarTarea',
+                    id: idTarea,
+                    titulo,
+                    contenido
+                },
+                success: function(response) {
+                    idTarea = "";
+
+                    const {
+                        status,
+                        mensaje
+                    } = response;
+                    $('#exampleModalCenter').modal('hide');
+                    consultarTareas();
+                    mostrarAlerta({
+                        title: "Tarea editada",
+                        text: mensaje,
+                        icon: status,
+                        textButton: "Aceptar"
+                    })
+                },
+                error: function(error) {
+
+                }
+            });
+        }
+
+
+        const consultarTareas = () => {
+            $.ajax({
+                type: "POST",
+                url: "tareasController.php",
+                data: {
+                    option: 'consultarTareas'
+                },
+                success: function(response) {
+                    $("#misCards").html('');
+                    const values = Object.values(response);
+                    values.forEach(tarea => {
+
+                        rellenar(tarea);
+                    });
+                },
+                error: function(error) {}
+            });
+        }
+
+
+        const mostrarModal = (opcion, id = "", titulo = "", contenido = "") => {
+            $("#btnGuardarTarea").hide();
+            $("#btnEditarTarea").hide();
+            $('#exampleModalCenter').modal('show');
+
+            if (opcion == "editar") {
+                idTarea = id;
+                $("#titulotarea").val(titulo);
+                $("#contenidoTarea").val(contenido);
+                $("#btnEditarTarea").show();
+            } else if (opcion == "nuevaTarea") {
+                $("#btnGuardarTarea").show();
+                $("#titulotarea").val("");
+                $("#contenidoTarea").val("");
             }
+        }
+
+
+        const mostrarAlerta = ({
+            title,
+            text,
+            icon,
+            textButton
+        }) => {
+            Swal.fire({
+                title: title,
+                text: text,
+                icon: icon,
+                confirmButtonText: textButton
+            })
+        }
+
+
+        $(document).on('click', 'button[name="closeModal"]', function() {
+            $('#exampleModalCenter').modal('hide');
         });
-    }
 
 
-    const consultarTareas = () => {
-        $.ajax({
-            type: "POST",
-            url: "tareasController.php",
-            data: {
-                option: 'consultarTareas'
-            },
-            success: function(response) {
-                $("#misCards").html('');
-                const values = Object.values(response);
-                values.forEach(tarea => {
-                  
-                    rellenar(tarea);
-                });
-            },
-            error: function(error) {}
-        });
-    }
+        const guardarTarea = () => {
+            const titulo = $("#titulotarea").val();
+            const contenido = $("#contenidoTarea").val();
+            $.ajax({
+                type: "POST",
+                url: "tareasController.php",
+                data: {
+                    option: 'guardarTarea',
+                    titulo,
+                    contenido
+                },
+                success: function(response) {
+                    const {
+                        status,
+                        mensaje
+                    } = response;
+                    $('#exampleModalCenter').modal('hide');
+                    consultarTareas();
+                    mostrarAlerta({
+                        title: "Tarea guardada",
+                        text: mensaje,
+                        icon: status,
+                        textButton: "Aceptar"
+                    })
+                },
+                error: function(error) {
 
-
-    const mostrarModal = (opcion, id="", titulo="", contenido="") => {
-      $("#btnGuardarTarea").hide();
-      $("#btnEditarTarea").hide();
-      $('#exampleModalCenter').modal('show'); 
-      
-      if(opcion=="editar"){
-        idTarea = id;
-        $("#titulotarea").val(titulo);
-        $("#contenidoTarea").val(contenido);
-        $("#btnEditarTarea").show();
-      }else if(opcion=="nuevaTarea"){
-        $("#btnGuardarTarea").show();
-        $("#titulotarea").val("");
-        $("#contenidoTarea").val("");
-      }
-    }
-
-
-    const mostrarAlerta = ({title, text, icon, textButton})=>{
-      Swal.fire({
-        title: title,
-        text: text,
-        icon: icon,
-        confirmButtonText: textButton
-      })
-    }
-
-
-    $(document).on('click', 'button[name="closeModal"]', function() {
-        $('#exampleModalCenter').modal('hide');
-    });
-
-
-    const guardarTarea = () => {
-        const titulo = $("#titulotarea").val();
-        const contenido = $("#contenidoTarea").val();
-        $.ajax({
-            type: "POST",
-            url: "tareasController.php",
-            data: {
-                option: 'guardarTarea',
-                titulo,
-                contenido
-            },
-            success: function(response) {
-                const {status, mensaje} = response;
-                $('#exampleModalCenter').modal('hide');
-                consultarTareas();
-                mostrarAlerta({
-                  title: "Tarea guardada",
-                  text: mensaje,
-                  icon: status,
-                  textButton: "Aceptar"
-                })
-            },
-            error: function(error) {
-         
-            }
-        });
-    }
+                }
+            });
+        }
     </script>
 </head>
 
@@ -195,27 +204,26 @@ if(!$hasLogin){
 
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitle">Crear tarea</h5>
-                    
+
                 </div>
                 <div class="modal-body">
-                <div class="form-group">
-                  <label for="titulotarea" class="col-form-label">Titulo Tarea:</label>
-                  <input type="text" class="form-control" id="titulotarea">
-                </div>
-                <div class="form-group">
-                  <label for="contenidoTarea" class="col-form-label">Contenido Tarea:</label>
-                  <input type="text" class="form-control" id="contenidoTarea">
-                </div>
+                    <div class="form-group">
+                        <label for="titulotarea" class="col-form-label">Titulo Tarea:</label>
+                        <input type="text" class="form-control" id="titulotarea">
+                    </div>
+                    <div class="form-group">
+                        <label for="contenidoTarea" class="col-form-label">Contenido Tarea:</label>
+                        <input type="text" class="form-control" id="contenidoTarea">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-toggle="modal" name="closeModal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="guardarTarea()" id="btnGuardarTarea" >Guardar tarea</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarTarea()" id="btnGuardarTarea">Guardar tarea</button>
                     <button type="button" class="btn btn-primary" onclick="editarTarea() " id="btnEditarTarea">Editar tarea</button>
                 </div>
             </div>
@@ -223,20 +231,20 @@ if(!$hasLogin){
     </div>
     <!-- Modal -->
 
-<div class="container p-2">
-<ul class="nav row justify-content-between">
+    <div class="container p-2">
+        <ul class="nav row justify-content-between">
 
-<li class="nav-item col-2">
-<a class="nav-link" href="#">Datafis</a>
-  </li> 
+            <li class="nav-item col-2">
+                <a class="nav-link" href="#">Datafis</a>
+            </li>
 
- 
 
-<li class="nav-item col-2">
-  <a class="btn btn-danger" href="/app/login/loginController.php?option=logout">Cerrar sesión</a>
-  </li>
-  
-</ul>
+
+            <li class="nav-item col-2">
+                <a class="btn btn-danger" href="/app/login/loginController.php?option=logout">Cerrar sesión</a>
+            </li>
+
+        </ul>
     </div>
 
     <div class="container">
