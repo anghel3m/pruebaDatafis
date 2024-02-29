@@ -35,7 +35,7 @@ if(!$hasLogin){
         } = tarea;
         const misCards = $('#misCards');
         misCards.append(`<div class="col p-2">
-                <div class="p-3 border bg-light">
+                <div class="p-1 border bg-light">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title">${titulo}</h5>
@@ -230,7 +230,7 @@ if(!$hasLogin){
     </div>
     <!-- Modal -->
 
-<div class="container">
+<div class="container p-2">
 <ul class="nav row justify-content-between">
 
 <li class="nav-item col-2">
